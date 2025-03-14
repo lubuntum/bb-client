@@ -6,10 +6,14 @@ import { AuthPage } from './components/auth/AuthPage';
 import { CreateOrderPage } from './components/orders/CreateOrderPage';
 import { AccountInfoPage } from './components/AccountInfoPage';
 import { HomePage } from './components/HomePage';
+import { ProtectedRoute } from './services/auth/ProtectedRoute';
+import { AuthProvider } from './services/auth/AuthProvider';
 function App() {
   return (
     <BrowserRouter>
-      <MainPage />
+      <AuthProvider>
+        <MainPage />
+      </AuthProvider>
     </BrowserRouter>
   );
 }
@@ -21,8 +25,8 @@ const MainPage = () => {
         <Route path='/' element = {<Navigate to={ROUTES.HOME} replace/>} />
         <Route path={ROUTES.HOME} element = {<HomePage/>} />
         <Route path={ROUTES.AUTH} element = {<AuthPage />}/>
-        <Route path={ROUTES.ACCOUNT} element = {<AccountInfoPage/>} />
-        <Route path={ROUTES.CREATE_ORDER} element = {<CreateOrderPage/>} />
+        <Route path={ROUTES.ACCOUNT} element = {<ProtectedRoute element={<AccountInfoPage/>}/>} />
+        <Route path={ROUTES.CREATE_ORDER} element = {<ProtectedRoute element={<CreateOrderPage/>}/>} />
       </Routes>
     </div>
   )
