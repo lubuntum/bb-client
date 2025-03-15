@@ -23,9 +23,8 @@ export const AuthProvider = ({children}) => {
     }
     const checkAuth = () => {
         if (Cookies.get("token") === undefined) return false
-        console.log("Token = ", Cookies.get("token"))
         //is better to confirm with server
-        setIsAuth(true)
+        //setIsAuth(true)
         return true
     }
 
