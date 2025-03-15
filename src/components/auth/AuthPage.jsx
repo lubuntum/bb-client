@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState } from "react"
-
+import('./LoginComponent')
 //Отобразить первым Login, по кнопке заменять компоненты
 const authComponents = {
     LOGIN: lazy(()=> import('./LoginComponent')),

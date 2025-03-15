@@ -3,6 +3,7 @@ import "./css/login.css"
 import { STATUSES } from "../../statuses"
 import { loginRequest } from "../../services/api/authApi"
 import { useAuth } from "../../services/auth/AuthProvider"
+import { authComponentsKeys } from "./AuthPage"
 const LoginComponent = ({setCurrentComponent}) => {
     const [status, setStatus] = useState(STATUSES.IDLE)
     const [email, setEmail] = useState(null)
@@ -24,8 +25,9 @@ const LoginComponent = ({setCurrentComponent}) => {
             <div className="login">
                 <input type="text" placeholder="email" onChange={e => {setEmail(e.target.value)}} />
                 <input type="password" placeholder="password" onChange={e => {setPass(e.target.value)}}/>
-                <button onClick={loginHandler}>Login</button>
+                <button onClick={loginHandler}>Логин</button>
             </div>
+            <button onClick={()=> setCurrentComponent(authComponentsKeys.REGISTER)}>Регистрация</button>
         </div>
             
         </>
