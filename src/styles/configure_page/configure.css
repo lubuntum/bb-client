@@ -1,0 +1,69 @@
+.configureContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 150px;
+    margin-bottom: 100px;
+    width: 100%;
+}
+.configureContainer .configureTitle p {
+    font-size: 3rem;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+}
+.configureContainer .configureSubtitle p {
+    font-size: 1rem;
+    color: gray;
+    line-height: 30px;
+}
+.configureContent {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+.configureLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.configureContent .configureLeft .configureLeftTitle p {
+    font-size: 2rem;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+}
+.configureSettings {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.configureSettings .configureSettingsItem {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #8B4513;
+    max-width: 600px;
+}
+.configureSettings .configureSettingsItem .configureSettingsTitle {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+.configureSettings .configureSettingsItem .configureSettingsTitle .configureSettingsName p {
+    font-size: 1rem;
+    font-weight: 600;
+}
+.configureSettings .configureSettingsItem .configureSettingsDescription p {
+    font-weight: .875rem;
+    line-height: 25px;
+    color: gray;
+    font-weight: 500;
+}
+.configureSettings .configureSettingsItem .configureSettingsButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+}
