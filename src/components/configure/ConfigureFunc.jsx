@@ -6,6 +6,7 @@ import { ReactComponent as FormIcon } from "../../res/icons/deployed_code_24dp_E
 import { ReactComponent as ColorIcon } from "../../res/icons/palette_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as OvenIcon } from "../../res/icons/bath_outdoor_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as OvenAddIcon } from "../../res/icons/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+import { ReactComponent as OvenPlaceIcon } from "../../res/icons/arrow_downward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as WindowIcon } from "../../res/icons/grid_view_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as TankIcon } from "../../res/icons/home_speaker_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as DoorIcon } from "../../res/icons/door_front_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
@@ -14,9 +15,6 @@ import { ReactComponent as FoundationIcon } from "../../res/icons/foundation_24d
 import { ReactComponent as TentionIcon } from "../../res/icons/circle_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 
 export const ConfigureFunc = () => {
-    const avaliableTypes = [
-        "material", "form", "ovenType", "color", "ovenAddition", "door", "tank", "window", "base"
-    ]
     const [settingsItems, setSettingsItems] = useState(null)
     const settingsItemsTemplate = [
         {
@@ -25,7 +23,7 @@ export const ConfigureFunc = () => {
             type: "material",
             title: "Выбор материала",
             description: "Выберите материал, из которого будет изготовлена ваша баня-бочка. Каждый из них обладает уникальными свойствами, такими как теплоизоляция и долговечность, что поможет создать идеальное пространство для отдыха и релаксации.",
-            options: ["Сосна (200 р)", "Ель", "Лиственница", "Кедр", "Дуб", "Клен", "Сибирская лиственница", "Грецкий орех"]
+            options: []
         },
         {
             name: "form_id",
@@ -33,7 +31,7 @@ export const ConfigureFunc = () => {
             type: "form",
             title: "Выбор формы",
             description: "Форма вашей бани-бочки влияет на её внешний вид и внутреннее пространство. Выберите ту, которая лучше всего соответствует вашему стилю и предпочтениям, чтобы создать уютное место для парения и отдыха.",
-            options: ["Бочка", "Куб", "Овал", "Буханка", "Окта", "Хилл-хаус", "Викинг", "Европа"]
+            options: []
         },
         {
             name: "color_id", 
@@ -41,15 +39,23 @@ export const ConfigureFunc = () => {
             type: "color",
             title: "Выбор цвета",
             description: "Цвет вашей бани-бочки играет важную роль в её восприятии. Выберите оттенок, который гармонирует с окружающим ландшафтом и создаёт атмосферу уюта и спокойствия, подчеркивая природную красоту.",
-            options: ["Светло-коричневый", "Темно-коричневый", "Золотистый", "Серый", "Кремовый", "Оливковый", "Темно-зеленый", "Бежевый", "Терракотовый", "Светло-зеленый", "Песочный", "Медовый"]
+            options: []
+        },
+        {   
+            name: "oven_placement_id", 
+            icon: <><OvenIcon className="icon" /> <OvenPlaceIcon className="icon"/></>,
+            type: "ovenPlacement",
+            title: "Выбор расположения печи",
+            description: "Расположение печи в вашей бане-бочке влияет на комфорт и эффективность обогрева. Выберите вариант, который обеспечит оптимальные условия для парения и создаст приятную атмосферу внутри.",
+            options: []
         },
         {   
             name: "oven_type_id", 
             icon: <OvenIcon className="icon" />,
             type: "ovenType",
             title: "Выбор типа печи",
-            description: "Тип печи определяет комфорт и эффективность обогрева вашей бани-бочки. Выберите вариант, который обеспечит оптимальные условия для парения и создаст приятную атмосферу внутри.",
-            options: ["Печь, с топкой внутри парной", "Печь, с выносной топкой на улицу"]
+            description: "ип печи определяет не только способ обогрева, но и атмосферу в вашей бане-бочке. Выберите вариант, который наилучшим образом соответствует вашим предпочтениям и стилю жизни.",
+            options: []
         },
         {
             name: "oven_addition_id", 
@@ -57,7 +63,7 @@ export const ConfigureFunc = () => {
             type: "ovenAddition",
             title: "Выбор дополнения к печи",
             description: "Дополнения к печи могут улучшить её функциональность и эффективность. Выберите опцию, которая наилучшим образом соответствует вашим потребностям, чтобы сделать процесс парения ещё более комфортным.",
-            options: ["Без дополнений", "Замена на черный дымоход", "Усиление камеры горения"]
+            options: []
         },
         {
             name: "window_id", 
@@ -65,7 +71,7 @@ export const ConfigureFunc = () => {
             type: "window",
             title: "Выбор окна",
             description: "Окна в бане-бочке обеспечивают естественное освещение и вентиляцию. Выберите вариант, который создаст комфортную атмосферу и позволит наслаждаться видами на природу, добавляя уют в ваше пространство.",
-            options: ["Без окон", "Окно 300х400", "2 окна 300х400", "Панорамный стеклопакет"]
+            options: []
         },
         {
             name: "tank_id", 
@@ -73,7 +79,7 @@ export const ConfigureFunc = () => {
             type: "tank",
             title: "Выбор бака для воды",
             description: "Бак для воды — важный элемент вашей бани-бочки. Выберите подходящий вариант, который обеспечит необходимый запас воды для комфортного парения и удобства в использовании.",
-            options: ["Сетка для камней", "30 литров", "50 литров"]
+            options: []
         },
         {   
             name: "door_id", 
@@ -81,7 +87,7 @@ export const ConfigureFunc = () => {
             type: "door",
             title: "Выбор двери",
             description: "Дверь — это не только элемент безопасности, но и важная деталь дизайна вашей бани-бочки. Выберите дверь, которая будет сочетаться с общим стилем и обеспечит удобный доступ.",
-            options: ["Деревянная дверь 1640х605 мм с окошком (правая)", "Деревянная дверь 1640х605 мм с окошком (левая)", "Дверь ПВХ 1640х605 мм (правая)", "Дверь ПВХ 1640х605 мм (левая)"]
+            options: []
         },
         {
             name: "area_id", 
@@ -89,7 +95,7 @@ export const ConfigureFunc = () => {
             type: "area",
             title: "Выбор размера",
             description: "Размер вашей бани-бочки влияет на её вместимость и комфорт. Выберите оптимальный размер, который соответствует вашим потребностям и возможностям участка, чтобы создать идеальное место для отдыха.",
-            options: ["2 х 2 м", "2.5 х 2.5 м", "3 х 2 м", "3 х 3 м", "4 х 2.5 м", "4 х 3 м", "5 х 2.5 м", "5 х 3 м", "6 х 3 м", "7 х 3 м"]
+            options: []
         },
         {
             name: "base_id", 
@@ -97,7 +103,7 @@ export const ConfigureFunc = () => {
             type: "base",
             title: "Выбор фундамента",
             description: "Правильный фундамент — залог долговечности и устойчивости вашей бани-бочки. Выберите подходящий вариант, который обеспечит надежную основу для вашего строения и защитит его от воздействия внешней среды.",
-            options: ["Бетонное основание", "2 бруса под основание", "4 бруса под основание", "6 брусьев под основание"]
+            options: []
         },
         {
             name: "tension_ring_id", 
@@ -105,11 +111,10 @@ export const ConfigureFunc = () => {
             type: "tensionRing",
             title: "Выбор стяжных колец",
             description: "Стяжные кольца обеспечивают дополнительную прочность и устойчивость конструкции вашей бани-бочки. Выберите количество колец, которое обеспечит необходимую поддержку и защиту, гарантируя долговечность вашей бани.",
-            options: ["2 стяжных кольца", "4 стяжных кольца", "6 стяжных колец"]
+            options: []
         }
     ]
 
-    const [selectedOptions, setSelectedOptions] = useState({})
     const [barrelSauna, setBarrelSauna] = useState({})
     /**
      * Хук подгружает материалы и подставляет их в settingsItem
@@ -117,19 +122,15 @@ export const ConfigureFunc = () => {
     useEffect(() => {
         const getBarrelComponents = async () => {
             const request = await getBarrelComponentsRequest()
-            const test = settingsItemsTemplate.map( item => {
+            const preparedItems = settingsItemsTemplate.map( item => {
                 const dataForItem = request.data[item.type]
+                console.log(dataForItem)
                 if (!dataForItem) return item
                 item.options = dataForItem
                 return item
             })
-            const preparedItems = avaliableTypes.map( type => {
-                const foundItem = settingsItemsTemplate.find((item) => item.type === type) // находим нужный item по его типу (material и тд)
-                foundItem.options = request.data[type] // у найденного item сохраняем в options список значений из запроса с таким же типом (material и тд)
-                return foundItem
-            })
-            console.log(test)
-            setSettingsItems(test)
+            console.log(preparedItems)
+            setSettingsItems(preparedItems)
         }
         getBarrelComponents()
     }, [])
