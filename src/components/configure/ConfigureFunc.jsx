@@ -189,7 +189,13 @@ export const ConfigureFunc = () => {
                 </div>
 
                 <div className="configureRight">
+                    <div className="configureRightTitle">
+                        <p>Выбранные опции</p>
+                    </div>
 
+                    <div className="configureOrderBuildButton">
+                        <button>Сохранить заказ</button>
+                    </div>
                 </div>
             </div>
         </div>
