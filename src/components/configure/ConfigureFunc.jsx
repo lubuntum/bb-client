@@ -16,6 +16,7 @@ import { ReactComponent as SizeIcon } from "../../res/icons/straighten_24dp_E8EA
 import { ReactComponent as FoundationIcon } from "../../res/icons/foundation_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as TentionIcon } from "../../res/icons/circle_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as TrashIcon } from "../../res/icons/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+import { SERVER_URL } from "../../services/api/urls"
 
 export const ConfigureFunc = () => {
     const [settingsItems, setSettingsItems] = useState(null)
@@ -183,11 +184,11 @@ export const ConfigureFunc = () => {
                     <div key={`gridItem${key}`} className="configureSelectedItemText">
                         {selectedOption.path ?
                         <div className="configureSelectedItemImage">
-                            <img src={sliderImage1}></img>
+                            <img src={`${SERVER_URL}${selectedOption.path}`}></img>
                         </div> : ""}
 
                         {selectedOption.hex ?
-                        <div className="configureSelectedItemColor"></div> : ""}
+                        <div className="configureSelectedItemColor" style={{backgroundColor: selectedOption.hex}}></div> : ""}
 
                         <div className="configureSelectedItemType">
                             <p>{selectedOption.type}</p>
