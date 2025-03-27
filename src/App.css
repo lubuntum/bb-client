@@ -85,6 +85,22 @@ button.configureSelected {
 button.configureItem:hover {
     background-color: #b1885d;
 }
+button.transparent {
+    border-radius: 0;
+    padding: 0;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+button.transparent .icon {
+    fill: rgb(185, 3, 3);
+    transition: all .2s ease;
+    transform: scale(.8);
+}
+button.transparent:hover .icon {
+    fill: rgb(153, 2, 2);
+}
 
 .icon {
     min-width: 30px;

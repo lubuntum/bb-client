@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { getBarrelComponentsRequest } from "../../services/api/barrelComponentsApi"
 
+import sliderImage1 from "../../res/images/banya-bochka-image1.png"
+
 import { ReactComponent as MaterialIcon } from "../../res/icons/forest_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as FormIcon } from "../../res/icons/deployed_code_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as ColorIcon } from "../../res/icons/palette_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
@@ -13,6 +15,7 @@ import { ReactComponent as DoorIcon } from "../../res/icons/door_front_24dp_E8EA
 import { ReactComponent as SizeIcon } from "../../res/icons/straighten_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as FoundationIcon } from "../../res/icons/foundation_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as TentionIcon } from "../../res/icons/circle_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+import { ReactComponent as TrashIcon } from "../../res/icons/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 
 export const ConfigureFunc = () => {
     const [settingsItems, setSettingsItems] = useState(null)
@@ -22,6 +25,7 @@ export const ConfigureFunc = () => {
             icon: <MaterialIcon className="icon" />,
             type: "material",
             title: "Выбор материала",
+            orderTitle: "Материал",
             description: "Выберите материал, из которого будет изготовлена ваша баня-бочка. Каждый из них обладает уникальными свойствами, такими как теплоизоляция и долговечность, что поможет создать идеальное пространство для отдыха и релаксации.",
             options: []
         },
@@ -30,6 +34,7 @@ export const ConfigureFunc = () => {
             icon: <FormIcon className="icon" />,
             type: "form",
             title: "Выбор формы",
+            orderTitle: "Форма",
             description: "Форма вашей бани-бочки влияет на её внешний вид и внутреннее пространство. Выберите ту, которая лучше всего соответствует вашему стилю и предпочтениям, чтобы создать уютное место для парения и отдыха.",
             options: []
         },
@@ -38,6 +43,7 @@ export const ConfigureFunc = () => {
             icon: <ColorIcon className="icon" />,
             type: "color",
             title: "Выбор цвета",
+            orderTitle: "Цвет",
             description: "Цвет вашей бани-бочки играет важную роль в её восприятии. Выберите оттенок, который гармонирует с окружающим ландшафтом и создаёт атмосферу уюта и спокойствия, подчеркивая природную красоту.",
             options: []
         },
@@ -46,6 +52,7 @@ export const ConfigureFunc = () => {
             icon: <><OvenIcon className="icon" /> <OvenPlaceIcon className="icon"/></>,
             type: "ovenPlacement",
             title: "Выбор расположения печи",
+            orderTitle: "Расположение печи",
             description: "Расположение печи в вашей бане-бочке влияет на комфорт и эффективность обогрева. Выберите вариант, который обеспечит оптимальные условия для парения и создаст приятную атмосферу внутри.",
             options: []
         },
@@ -54,6 +61,7 @@ export const ConfigureFunc = () => {
             icon: <OvenIcon className="icon" />,
             type: "ovenType",
             title: "Выбор типа печи",
+            orderTitle: "Тип печи",
             description: "ип печи определяет не только способ обогрева, но и атмосферу в вашей бане-бочке. Выберите вариант, который наилучшим образом соответствует вашим предпочтениям и стилю жизни.",
             options: []
         },
@@ -62,6 +70,7 @@ export const ConfigureFunc = () => {
             icon: <><OvenIcon className="icon" /> <OvenAddIcon className="icon" /></>,
             type: "ovenAddition",
             title: "Выбор дополнения к печи",
+            orderTitle: "Дополнения к печи",
             description: "Дополнения к печи могут улучшить её функциональность и эффективность. Выберите опцию, которая наилучшим образом соответствует вашим потребностям, чтобы сделать процесс парения ещё более комфортным.",
             options: []
         },
@@ -70,6 +79,7 @@ export const ConfigureFunc = () => {
             icon: <WindowIcon className="icon" />,
             type: "window",
             title: "Выбор окна",
+            orderTitle: "Окно(а)",
             description: "Окна в бане-бочке обеспечивают естественное освещение и вентиляцию. Выберите вариант, который создаст комфортную атмосферу и позволит наслаждаться видами на природу, добавляя уют в ваше пространство.",
             options: []
         },
@@ -78,6 +88,7 @@ export const ConfigureFunc = () => {
             icon: <TankIcon className="icon" />,
             type: "tank",
             title: "Выбор бака для воды",
+            orderTitle: "Бак для воды",
             description: "Бак для воды — важный элемент вашей бани-бочки. Выберите подходящий вариант, который обеспечит необходимый запас воды для комфортного парения и удобства в использовании.",
             options: []
         },
@@ -86,6 +97,7 @@ export const ConfigureFunc = () => {
             icon: <DoorIcon className="icon" />,
             type: "door",
             title: "Выбор двери",
+            orderTitle: "Дверь",
             description: "Дверь — это не только элемент безопасности, но и важная деталь дизайна вашей бани-бочки. Выберите дверь, которая будет сочетаться с общим стилем и обеспечит удобный доступ.",
             options: []
         },
@@ -94,6 +106,7 @@ export const ConfigureFunc = () => {
             icon: <SizeIcon className="icon" />,
             type: "area",
             title: "Выбор размера",
+            orderTitle: "Размер",
             description: "Размер вашей бани-бочки влияет на её вместимость и комфорт. Выберите оптимальный размер, который соответствует вашим потребностям и возможностям участка, чтобы создать идеальное место для отдыха.",
             options: []
         },
@@ -102,6 +115,7 @@ export const ConfigureFunc = () => {
             icon: <FoundationIcon className="icon" />,
             type: "base",
             title: "Выбор фундамента",
+            orderTitle: "Фундамент",
             description: "Правильный фундамент — залог долговечности и устойчивости вашей бани-бочки. Выберите подходящий вариант, который обеспечит надежную основу для вашего строения и защитит его от воздействия внешней среды.",
             options: []
         },
@@ -110,6 +124,7 @@ export const ConfigureFunc = () => {
             icon: <TentionIcon className="icon" />,
             type: "tensionRing",
             title: "Выбор стяжных колец",
+            orderTitle: "Стяжные колца",
             description: "Стяжные кольца обеспечивают дополнительную прочность и устойчивость конструкции вашей бани-бочки. Выберите количество колец, которое обеспечит необходимую поддержку и защиту, гарантируя долговечность вашей бани.",
             options: []
         }
@@ -124,27 +139,63 @@ export const ConfigureFunc = () => {
             const request = await getBarrelComponentsRequest()
             const preparedItems = settingsItemsTemplate.map( item => {
                 const dataForItem = request.data[item.type]
-                console.log(dataForItem)
                 if (!dataForItem) return item
                 item.options = dataForItem
                 return item
             })
-            console.log(preparedItems)
             setSettingsItems(preparedItems)
         }
         getBarrelComponents()
     }, [])
-
-    useEffect(() => {
-        console.log(barrelSauna);
-    }, [barrelSauna]);
 
     const handleOptionSelect = (name, option) => {
         setBarrelSauna(prevState => ({
             ...prevState,
             [name]: option
         }))
-        
+    }
+
+    const handleRemoveOption = (name) => {
+        setBarrelSauna(prevState => {
+            const newState = { ...prevState }
+            delete newState[name]
+            return newState
+        })
+    }
+
+    const renderSelectedItems = () => {
+        return Object.entries(barrelSauna).map(([key, value]) => {
+            const selectedItem = settingsItems.find(item => item.name === key)
+            const selectedOption = selectedItem.options.find(option => option.id === value)
+            console.log(selectedItem)
+            console.log(selectedOption)
+            return (
+                <div className="configureSelectedItem">
+                    <div className="configureSelectedItemTitle">
+                        <div className="orderTitle">
+                            <p>{selectedItem.orderTitle}</p>
+                        </div>
+                        <div className="configureSelectedItemDelete">
+                            <button className="transparent" onClick={() => handleRemoveOption(key)}><TrashIcon className="icon"/></button>
+                        </div>
+                    </div>
+                    <div className="orderTitleDivider"></div>
+                    <div key={`gridItem${key}`} className="configureSelectedItemText">
+                        {selectedOption.path ?
+                        <div className="configureSelectedItemImage">
+                            <img src={sliderImage1}></img>
+                        </div> : ""}
+
+                        {selectedOption.hex ?
+                        <div className="configureSelectedItemColor"></div> : ""}
+
+                        <div className="configureSelectedItemType">
+                            <p>{selectedOption.type}</p>
+                        </div>
+                    </div>
+                </div>
+            )
+        })
     }
 
     return (
@@ -180,7 +231,7 @@ export const ConfigureFunc = () => {
                                     {item.options.map((option, index) => (
                                         <button key={`itemOption${index}`}
                                                 className={`configureItem ${barrelSauna[item.name] === option.id ? "configureSelected" : ""}`}
-                                                onClick={() => handleOptionSelect(item.name, option.id)}>{option.type}</button>
+                                                onClick={() => handleOptionSelect(item.name, option.id)}>{option.type} ({option.price} ₽)</button>
                                     ))}
                                 </div>
                             </div>
@@ -191,6 +242,10 @@ export const ConfigureFunc = () => {
                 <div className="configureRight">
                     <div className="configureRightTitle">
                         <p>Выбранные опции</p>
+                    </div>
+
+                    <div className="configureSelectedItems">
+                        {renderSelectedItems()}
                     </div>
 
                     <div className="configureOrderBuildButton">
