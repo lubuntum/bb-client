@@ -14,8 +14,13 @@ import { ReactComponent as FoundationIcon } from "../../res/icons/foundation_24d
 import { ReactComponent as TentionIcon } from "../../res/icons/circle_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 
 export const ConfigureFunc = () => {
-    const settingsItems = [
+    const avaliableTypes = [
+        "material", "form", "ovenType", "color", "ovenAddition", "door", "tank", "window", "base"
+    ]
+    const [settingsItems, setSettingsItems] = useState(null)
+    const settingsItemsTemplate = [
         {
+            name: "material_id",
             icon: <MaterialIcon className="icon" />,
             type: "material",
             title: "Выбор материала",
@@ -23,6 +28,7 @@ export const ConfigureFunc = () => {
             options: ["Сосна (200 р)", "Ель", "Лиственница", "Кедр", "Дуб", "Клен", "Сибирская лиственница", "Грецкий орех"]
         },
         {
+            name: "form_id",
             icon: <FormIcon className="icon" />,
             type: "form",
             title: "Выбор формы",
@@ -30,20 +36,23 @@ export const ConfigureFunc = () => {
             options: ["Бочка", "Куб", "Овал", "Буханка", "Окта", "Хилл-хаус", "Викинг", "Европа"]
         },
         {
+            name: "color_id", 
             icon: <ColorIcon className="icon" />,
             type: "color",
             title: "Выбор цвета",
             description: "Цвет вашей бани-бочки играет важную роль в её восприятии. Выберите оттенок, который гармонирует с окружающим ландшафтом и создаёт атмосферу уюта и спокойствия, подчеркивая природную красоту.",
             options: ["Светло-коричневый", "Темно-коричневый", "Золотистый", "Серый", "Кремовый", "Оливковый", "Темно-зеленый", "Бежевый", "Терракотовый", "Светло-зеленый", "Песочный", "Медовый"]
         },
-        {
+        {   
+            name: "oven_type_id", 
             icon: <OvenIcon className="icon" />,
-            type: "oven",
+            type: "ovenType",
             title: "Выбор типа печи",
             description: "Тип печи определяет комфорт и эффективность обогрева вашей бани-бочки. Выберите вариант, который обеспечит оптимальные условия для парения и создаст приятную атмосферу внутри.",
             options: ["Печь, с топкой внутри парной", "Печь, с выносной топкой на улицу"]
         },
         {
+            name: "oven_addition_id", 
             icon: <><OvenIcon className="icon" /> <OvenAddIcon className="icon" /></>,
             type: "ovenAddition",
             title: "Выбор дополнения к печи",
@@ -51,6 +60,7 @@ export const ConfigureFunc = () => {
             options: ["Без дополнений", "Замена на черный дымоход", "Усиление камеры горения"]
         },
         {
+            name: "window_id", 
             icon: <WindowIcon className="icon" />,
             type: "window",
             title: "Выбор окна",
@@ -58,13 +68,15 @@ export const ConfigureFunc = () => {
             options: ["Без окон", "Окно 300х400", "2 окна 300х400", "Панорамный стеклопакет"]
         },
         {
+            name: "tank_id", 
             icon: <TankIcon className="icon" />,
             type: "tank",
-            title: "Выбор бака",
+            title: "Выбор бака для воды",
             description: "Бак для воды — важный элемент вашей бани-бочки. Выберите подходящий вариант, который обеспечит необходимый запас воды для комфортного парения и удобства в использовании.",
-            options: ["Сетка для камней", "Бак для воды на 30 литров", "Бак для воды на 50 литров"]
+            options: ["Сетка для камней", "30 литров", "50 литров"]
         },
-        {
+        {   
+            name: "door_id", 
             icon: <DoorIcon className="icon" />,
             type: "door",
             title: "Выбор двери",
@@ -72,6 +84,7 @@ export const ConfigureFunc = () => {
             options: ["Деревянная дверь 1640х605 мм с окошком (правая)", "Деревянная дверь 1640х605 мм с окошком (левая)", "Дверь ПВХ 1640х605 мм (правая)", "Дверь ПВХ 1640х605 мм (левая)"]
         },
         {
+            name: "area_id", 
             icon: <SizeIcon className="icon" />,
             type: "area",
             title: "Выбор размера",
@@ -79,15 +92,17 @@ export const ConfigureFunc = () => {
             options: ["2 х 2 м", "2.5 х 2.5 м", "3 х 2 м", "3 х 3 м", "4 х 2.5 м", "4 х 3 м", "5 х 2.5 м", "5 х 3 м", "6 х 3 м", "7 х 3 м"]
         },
         {
+            name: "base_id", 
             icon: <FoundationIcon className="icon" />,
-            type: "support",
+            type: "base",
             title: "Выбор фундамента",
             description: "Правильный фундамент — залог долговечности и устойчивости вашей бани-бочки. Выберите подходящий вариант, который обеспечит надежную основу для вашего строения и защитит его от воздействия внешней среды.",
             options: ["Бетонное основание", "2 бруса под основание", "4 бруса под основание", "6 брусьев под основание"]
         },
         {
+            name: "tension_ring_id", 
             icon: <TentionIcon className="icon" />,
-            type: "tention",
+            type: "tensionRing",
             title: "Выбор стяжных колец",
             description: "Стяжные кольца обеспечивают дополнительную прочность и устойчивость конструкции вашей бани-бочки. Выберите количество колец, которое обеспечит необходимую поддержку и защиту, гарантируя долговечность вашей бани.",
             options: ["2 стяжных кольца", "4 стяжных кольца", "6 стяжных колец"]
@@ -95,24 +110,40 @@ export const ConfigureFunc = () => {
     ]
 
     const [selectedOptions, setSelectedOptions] = useState({})
-
+    const [barrelSauna, setBarrelSauna] = useState({})
+    /**
+     * Хук подгружает материалы и подставляет их в settingsItem
+     */
     useEffect(() => {
         const getBarrelComponents = async () => {
             const request = await getBarrelComponentsRequest()
-            console.log(request.data)
+            const test = settingsItemsTemplate.map( item => {
+                const dataForItem = request.data[item.type]
+                if (!dataForItem) return item
+                item.options = dataForItem
+                return item
+            })
+            const preparedItems = avaliableTypes.map( type => {
+                const foundItem = settingsItemsTemplate.find((item) => item.type === type) // находим нужный item по его типу (material и тд)
+                foundItem.options = request.data[type] // у найденного item сохраняем в options список значений из запроса с таким же типом (material и тд)
+                return foundItem
+            })
+            console.log(test)
+            setSettingsItems(test)
         }
         getBarrelComponents()
     }, [])
 
     useEffect(() => {
-        console.log(selectedOptions);
-    }, [selectedOptions]);
+        console.log(barrelSauna);
+    }, [barrelSauna]);
 
-    const handleOptionSelect = (type, option) => {
-        setSelectedOptions(prevState => ({
+    const handleOptionSelect = (name, option) => {
+        setBarrelSauna(prevState => ({
             ...prevState,
-            [type]: option
+            [name]: option
         }))
+        
     }
 
     return (
@@ -131,7 +162,7 @@ export const ConfigureFunc = () => {
                         <p>Настройки бочки</p>
                     </div>
                     <div className="configureSettings">
-                        {settingsItems.map((item, index) => (
+                        {settingsItems && settingsItems.map((item, index) => (
                             <div className="configureSettingsItem" key={`item${index}`}>
                                 <div className="configureSettingsTitle">
                                     {item.icon}
@@ -147,8 +178,8 @@ export const ConfigureFunc = () => {
                                 <div className="configureSettingsButtons">
                                     {item.options.map((option, index) => (
                                         <button key={`itemOption${index}`}
-                                                className={`configureItem ${selectedOptions[item.type] === option ? "configureSelected" : ""}`}
-                                                onClick={() => handleOptionSelect(item.type, option)}>{option}</button>
+                                                className={`configureItem ${barrelSauna[item.name] === option.id ? "configureSelected" : ""}`}
+                                                onClick={() => handleOptionSelect(item.name, option.id)}>{option.type}</button>
                                     ))}
                                 </div>
                             </div>
