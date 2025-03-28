@@ -17,9 +17,11 @@ import { ReactComponent as FoundationIcon } from "../../res/icons/foundation_24d
 import { ReactComponent as TentionIcon } from "../../res/icons/circle_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as TrashIcon } from "../../res/icons/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { SERVER_URL } from "../../services/api/urls"
+import { createOrderRequest } from "../../services/api/orderApi"
+import { useAuth } from "../../services/auth/AuthProvider"
+import { STATUSES } from "../../statuses"
 
 export const ConfigureFunc = () => {
-    const [settingsItems, setSettingsItems] = useState(null)
     const settingsItemsTemplate = [
         {
             name: "material_id",
@@ -130,8 +132,12 @@ export const ConfigureFunc = () => {
             options: []
         }
     ]
-
+    const [settingsItems, setSettingsItems] = useState(null)
+    const [totalPrice, setTotalPrice] = useState(0)
     const [barrelSauna, setBarrelSauna] = useState({})
+    const [status, setStatus] = useState(STATUSES.IDLE)
+
+    const {getToken} = useAuth()
 
     useEffect(() => {
         const getBarrelComponents = async () => {
@@ -147,27 +153,55 @@ export const ConfigureFunc = () => {
         getBarrelComponents()
     }, [])
 
-    const handleOptionSelect = (name, option) => {
-        setBarrelSauna(prevState => ({
-            ...prevState,
-            [name]: option
-        }))
+    const createOrder = async() => {
+        if (status === STATUSES.SUCCESS) return
+        const barrelSaunaForOrder = {}
+        settingsItems.forEach(item => {
+            if (!barrelSauna[item.type] || !barrelSauna[item.type].id ) return
+            barrelSaunaForOrder[item.name] = barrelSauna[item.type].id
+        })
+        
+        barrelSaunaForOrder.total_price = totalPrice
+        try {
+            const response = await createOrderRequest({barrelSauna: barrelSaunaForOrder}, getToken())
+            setStatus(STATUSES.SUCCESS)
+        } catch(err) {
+            setStatus(STATUSES.ERROR)
+        }
+        
+    }
+    const handleOptionSelect = (type, option) => {
+        const updatedBarrelSauna = {... barrelSauna, [type]: option}
+        setTotalPrice(countToTotalPrice(updatedBarrelSauna))
+        setBarrelSauna(updatedBarrelSauna)
+    }
+    const countToTotalPrice = (updatedBarrelSauna) => {
+        let totalPrice = 0
+        Object.entries(updatedBarrelSauna).forEach(([key, value]) => {
+            console.log(`${JSON.stringify(value)} + ${totalPrice}`)
+            if (key === "material" || key === "area") return
+            if (value && value.price) totalPrice += value.price
+        })
+        if (updatedBarrelSauna["material"] && updatedBarrelSauna["area"] ) 
+            totalPrice += updatedBarrelSauna["material"].price * updatedBarrelSauna["area"].total_area
+        return totalPrice
     }
 
-    const handleRemoveOption = (name) => {
+    const handleRemoveOption = (type) => {
         setBarrelSauna(prevState => {
             const newState = { ...prevState }
-            delete newState[name]
+            delete newState[type]
             return newState
         })
     }
 
+    
+
     const renderSelectedItems = () => {
         return Object.entries(barrelSauna).map(([key, value]) => {
-            const selectedItem = settingsItems.find(item => item.name === key)
-            const selectedOption = selectedItem.options.find(option => option.id === value)
-            console.log(selectedItem)
-            console.log(selectedOption)
+            const selectedItem = settingsItems.find(item => item.type === key)
+            const selectedOption = selectedItem.options.find(option => option.id === value.id)
+            
             return (
                 <div className="configureSelectedItem">
                     <div className="configureSelectedItemTitle">
@@ -229,8 +263,8 @@ export const ConfigureFunc = () => {
                                 <div className="configureSettingsButtons">
                                     {item.options.map((option, index) => (
                                         <button key={`itemOption${index}`}
-                                                className={`configureItem ${barrelSauna[item.name] === option.id ? "configureSelected" : ""}`}
-                                                onClick={() => handleOptionSelect(item.name, option.id)}>{option.type} ({option.price} ₽)</button>
+                                                className={`configureItem ${barrelSauna[item.type]?.id === option.id ? "configureSelected" : ""}`}
+                                                onClick={() => handleOptionSelect(item.type, option)}>{option.type} ({option.price} ₽)</button>
                                     ))}
                                 </div>
                             </div>
@@ -246,9 +280,11 @@ export const ConfigureFunc = () => {
                     {Object.keys(barrelSauna).length > 0 ? 
                     <div className="configureOrderBuildButton">
                         {Object.keys(barrelSauna).length === 12 ?
-                        <button>Сохранить заказ</button> : ""}
+                        <button style={{backgroundColor: status === STATUSES.SUCCESS ? "green" : ""}} onClick={createOrder}>
+                            {status === STATUSES.SUCCESS ? "Заказ успешно сохранен" : "Сохранить заказ"}
+                        </button> : ""}
                         <div className="orderSum">
-                            <p>Итого: <span>891376.00 ₽</span></p>
+                            <p>Итого: <span>{totalPrice} ₽</span></p>
                         </div> 
                     </div> : ""}
                 </div>
