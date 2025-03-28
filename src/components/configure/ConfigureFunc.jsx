@@ -132,9 +132,7 @@ export const ConfigureFunc = () => {
     ]
 
     const [barrelSauna, setBarrelSauna] = useState({})
-    /**
-     * Хук подгружает материалы и подставляет их в settingsItem
-     */
+
     useEffect(() => {
         const getBarrelComponents = async () => {
             const request = await getBarrelComponentsRequest()
@@ -240,18 +238,19 @@ export const ConfigureFunc = () => {
                     </div>
                 </div>
 
-                <div className="configureRight">
-                    <div className="configureRightTitle">
-                        <p>Выбранные опции</p>
-                    </div>
-
+                <div className={`configureRight`}>
                     <div className="configureSelectedItems">
                         {renderSelectedItems()}
                     </div>
-
+                    
+                    {Object.keys(barrelSauna).length > 0 ? 
                     <div className="configureOrderBuildButton">
-                        <button>Сохранить заказ</button>
-                    </div>
+                        {Object.keys(barrelSauna).length === 12 ?
+                        <button>Сохранить заказ</button> : ""}
+                        <div className="orderSum">
+                            <p>Итого: <span>891376.00 ₽</span></p>
+                        </div> 
+                    </div> : ""}
                 </div>
             </div>
         </div>
