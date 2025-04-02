@@ -16,6 +16,7 @@ export const HeaderComponent = () => {
                 <a>Главная</a>
                 <a>Продукция</a>
                 <a>О нас</a>
+                {checkAuth && <a>Мои заказы</a>}
             </div>
 
             <div className="login">

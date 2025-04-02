@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import { ReactComponent as EcoIcon } from "../res/icons/eco_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as HandshakeIcon } from "../res/icons/handshake_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as ThumbIcon } from "../res/icons/thumb_up_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
@@ -50,9 +49,6 @@ export const HomeAbout = () => {
                     <div className="aboutText">
                         <p>Покупка банной бочки Rustic Retreat стала лучшим решением для нашей семьи. Это не только функционально, но и невероятно красиво.</p>
                         <div className="aboutUser">
-                            <div className="aboutUserImg">
-                                <img></img>
-                            </div>
                             <div className="aboutUserName">
                                 <p>Иванов Иван</p>
                                 <p>@ivanovivan</p>

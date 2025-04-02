@@ -4,5 +4,6 @@ export const ROUTES = {
     CONFIGURE: "/configure",
     ACCOUNT: "/account",
     AUTH: "/auth",
-    CREATE_ORDER: "/create-order"
+    CREATE_ORDER: "/create-order",
+    ABOUT: "/about"
 }

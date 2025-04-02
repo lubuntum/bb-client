@@ -3,14 +3,14 @@ import './App.css';
 import {Route, Routes, Navigate, BrowserRouter} from 'react-router-dom'
 import { ROUTES } from './routes';
 import { AuthPage } from './components/auth/AuthPage';
-import { AccountInfoPage } from './components/AccountInfoPage';
 import { HomePage } from './components/HomePage';
 import { ProtectedRoute } from './services/auth/ProtectedRoute';
 import { AuthProvider } from './services/auth/AuthProvider';
-import { HeaderComponent } from './components/header/HeaderComponent';
 import { AuthProtectedRoute } from './services/auth/AuthProtectedRoute';
 import { ProductPage } from './components/products/ProductPage';
 import { ConfigurePage } from './components/configure/ConfigurePage';
+import { AboutPage } from './components/about/AboutPage';
+import { OrderInfoPage } from './components/order/OrderInfoPage';
 
 function App() {
   return (
@@ -30,8 +30,9 @@ const MainPage = () => {
         <Route path={ROUTES.HOME}         element = {<HomePage/>}/>
         <Route path={ROUTES.PRODUCTS}     element = {<ProductPage/>}/>
         <Route path={ROUTES.CONFIGURE}    element = {<ConfigurePage/>}/>
+        <Route path={ROUTES.ABOUT}        element = {<AboutPage/>}/>
         <Route path={ROUTES.AUTH}         element = {<AuthProtectedRoute element={<AuthPage/>}/>}/>
-        <Route path={ROUTES.ACCOUNT}      element = {<ProtectedRoute element={<AccountInfoPage/>}/>}/>
+        <Route path={ROUTES.ACCOUNT}      element = {<ProtectedRoute element={<OrderInfoPage/>}/>}/>
       </Routes>
     </div>
   )
