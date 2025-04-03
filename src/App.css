@@ -102,6 +102,20 @@ button.transparent .icon {
 button.transparent:hover .icon {
     fill: rgb(153, 2, 2);
 }
+button.link {
+    border-radius: 0;
+    border: 1px solid transparent;
+    height: auto;
+    padding: 0;
+    background-color: transparent;
+    color: black;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+button.link:hover {
+    border-bottom: 1px solid black;
+}
 
 .icon {
     min-width: 30px;

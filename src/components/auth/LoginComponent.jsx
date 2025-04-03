@@ -1,14 +1,17 @@
 import { useState } from "react"
-import "./css/login.css"
 import { STATUSES } from "../../statuses"
 import { loginRequest } from "../../services/api/authApi"
 import { useAuth } from "../../services/auth/AuthProvider"
 import { authComponentsKeys } from "./AuthPage"
+
+import { ReactComponent as FaceIcon } from "../../res/icons/face_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+
 const LoginComponent = ({setCurrentComponent}) => {
     const [status, setStatus] = useState(STATUSES.IDLE)
     const [email, setEmail] = useState(null)
     const [pass, setPass] = useState(null)
     const {login} = useAuth()
+
     const loginHandler = async () => {
         try {
             const response = await loginRequest(email, pass)
@@ -17,20 +20,36 @@ const LoginComponent = ({setCurrentComponent}) => {
             setStatus(STATUSES.ERROR)
         }
     }
+
     return (
-        <>
-        <div className="login-wrapper">
-            {status === STATUSES.ERROR && <span style={{color: "red"}}>Error occured</span>}
-            <p>Login component</p>
-            <div className="login">
-                <input type="text" placeholder="email" onChange={e => {setEmail(e.target.value)}} />
-                <input type="password" placeholder="password" onChange={e => {setPass(e.target.value)}}/>
-                <button onClick={loginHandler}>Логин</button>
+        <div className="loginContainer">
+            <div className="loginTitle">
+                <p>Вход</p>
+                <button className="link" onClick={()=> setCurrentComponent(authComponentsKeys.REGISTER)}>Создать аккаунт</button>
             </div>
-            <button onClick={()=> setCurrentComponent(authComponentsKeys.REGISTER)}>Регистрация</button>
-        </div>
             
-        </>
+            {status === STATUSES.ERROR && <span style={{color: "red"}}>Error occured</span>}
+
+            <div className="loginForm">
+                <div className="formTitle">
+                    <FaceIcon className="icon"/>
+                    <p>Войти в аккаунт</p>
+                </div>
+
+                <div className="formSubtitle">
+                    <p>Введите свои данные для входа</p>
+                </div>
+
+                <input autoComplete="off" type="text" placeholder="Почта" onChange={e => {setEmail(e.target.value)}} />
+                <input autoComplete="off" type="password" placeholder="Пароль" onChange={e => {setPass(e.target.value)}}/>
+                
+                <div className="forgotPassword">
+                    <button className="link">Забыли пароль?</button>
+                </div>
+
+                <button onClick={loginHandler}>Войти</button>
+            </div>
+        </div>
     )
 }
 
