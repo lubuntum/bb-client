@@ -11,6 +11,10 @@ export const HeaderComponent = () => {
     const navigate = useNavigate()
 
     const { logout, checkAuth } = useAuth()
+
+    const navigateToAuth = () => {
+        navigate(ROUTES.AUTH)
+    }
     return (
         <header>
             <div className="logo" onClick={() => navigate(ROUTES.HOME)}>
@@ -21,11 +25,11 @@ export const HeaderComponent = () => {
                 <a onClick={() => navigate(ROUTES.HOME)}>Главная</a>
                 <a onClick={() => navigate(ROUTES.PRODUCTS)}>Продукция</a>
                 <a onClick={() => navigate(ROUTES.ABOUT)}>О нас</a>
-                {checkAuth && <a onClick={() => navigate(ROUTES.ACCOUNT)}>Мои заказы</a>}
+                {checkAuth() && <a onClick={() => navigate(ROUTES.ACCOUNT)}>Мои заказы</a>}
             </div>
 
             <div className="login">
-                {checkAuth ? <button onClick={logout}>Выход</button> : <button>Войти</button>}
+                {checkAuth() ? <button onClick={logout}>Выход</button> : <button onClick={navigateToAuth}>Войти</button>}
             </div>
         </header>
     )
