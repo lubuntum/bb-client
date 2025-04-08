@@ -1,4 +1,4 @@
-import sliderImage1 from "../res/images/banya-bochka-image1.png"
+import classicBarrelSauna from "../res/images/classicBarrelSauna.webp"
 
 export const HomeContacts = () => {
     return (
@@ -15,7 +15,7 @@ export const HomeContacts = () => {
 
             <div className="contactsRight">
                 <div className="contactsImage">
-                    <img src={sliderImage1}></img>
+                    <img src={classicBarrelSauna}></img>
                 </div>
             </div>
 
@@ -35,7 +35,7 @@ export const HomeContacts = () => {
                         <p>Наш адрес</p>
                     </div>
                     <div className="contactsItemText">
-                        <p>Москва, ул. Лесная, д. 10</p>
+                        <p>Абакан, ул. Некрасова 31А</p>
                     </div>
                 </div>
 
@@ -44,8 +44,8 @@ export const HomeContacts = () => {
                         <p>Свяжитесь с нами</p>
                     </div>
                     <div className="contactsItemText">
-                        <p>+7 (888) 888-88-88</p>
-                        <p>+7 (888) 888-88-88</p>
+                        <p>+7 (800) 555-35-35</p>
+                        <p>+7 (345) 678-91-90</p>
                     </div>
                 </div>
             </div>

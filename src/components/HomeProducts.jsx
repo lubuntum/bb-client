@@ -1,11 +1,17 @@
-import sliderImage1 from "../res/images/banya-bochka-image1.png"
+import { useNavigate } from "react-router-dom"
+import { ROUTES } from "../routes.js"
+
+import classicStyleBarrelSauna from "../res/images/classicStyleBarrelSauna.webp"
+import modernStyleBarrelSauna from "../res/images/modernStyleBarrelSauna.webp"
 
 export const HomeProducts = () => {
+    const navigate = useNavigate()
+
     return (
         <div className="productsContainer">
             <div className="productsCard">
                 <div className="productImage">
-                    <img src={sliderImage1}></img>
+                    <img src={classicStyleBarrelSauna}></img>
                 </div>
                 <div className="proudctText">
                     <div className="productTitle">
@@ -15,14 +21,14 @@ export const HomeProducts = () => {
                         <p>Откройте для себя традиционные бочки, которые идеально подходят для любого дома.</p>
                     </div>
                     <div className="productButton">
-                        <a>Подробнее &#8594;</a>
+                        <a onClick={() => navigate(ROUTES.PRODUCTS)}>Подробнее &#8594;</a>
                     </div>
                 </div>
             </div>
 
             <div className="productsCard">
                 <div className="productImage">
-                    <img src={sliderImage1}></img>
+                    <img src={modernStyleBarrelSauna}></img>
                 </div>
                 <div className="proudctText">
                     <div className="productTitle">
@@ -32,7 +38,7 @@ export const HomeProducts = () => {
                         <p>Элегантные и стильные бочки для тех, кто ценит современный дизайн.</p>
                     </div>
                     <div className="productButton">
-                        <a>Подробнее &#8594;</a>
+                        <a onClick={() => navigate(ROUTES.PRODUCTS)}>Подробнее &#8594;</a>
                     </div>
                 </div>
             </div>

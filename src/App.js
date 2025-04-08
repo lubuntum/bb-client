@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {Route, Routes, Navigate, BrowserRouter} from 'react-router-dom'
+import {Route, Routes, Navigate, BrowserRouter, useLocation} from 'react-router-dom'
 import { ROUTES } from './routes';
 import { AuthPage } from './components/auth/AuthPage';
 import { HomePage } from './components/HomePage';
@@ -11,6 +11,7 @@ import { ProductPage } from './components/products/ProductPage';
 import { ConfigurePage } from './components/configure/ConfigurePage';
 import { AboutPage } from './components/about/AboutPage';
 import { OrderInfoPage } from './components/order/OrderInfoPage';
+import { useEffect } from 'react';
 
 function App() {
   return (
@@ -22,8 +23,18 @@ function App() {
   );
 }
 const MainPage = () => {
+  const ScrollToTop = () => {
+    const { pathname } = useLocation()
+
+    useEffect(() => {
+      window.scrollTo(0, 0)
+    }, [pathname])
+    return null
+  }
+
   return (
     <div className='pageWrapper'>
+      <ScrollToTop/>
       <Routes>
         <Route path='/*'                  element = {<p>404 NOT FOUND</p>}/>
         <Route path='/'                   element = {<Navigate to={ROUTES.HOME} replace/>}/>

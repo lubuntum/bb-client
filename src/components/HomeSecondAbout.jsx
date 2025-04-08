@@ -1,9 +1,13 @@
 import { ReactComponent as EcoIcon } from "../res/icons/forest_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as HammerIcon } from "../res/icons/hardware_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+import { ROUTES } from "../routes.js"
 
-import sliderImage1 from "../res/images/banya-bochka-image1.png"
+import ovalBarrelSauna from "../res/images/ovalBarrelSauna.webp"
+import { useNavigate } from "react-router-dom"
 
 export const HomeSecondAbout = () => {
+    const navigate = useNavigate()
+
     return (
         <div className="secondAboutContainer">
             <div className="secondAboutLeft">
@@ -34,13 +38,13 @@ export const HomeSecondAbout = () => {
                 </div>
 
                 <div className="aboutButton">
-                    <button>Узнать больше о наших продуктах &#8594;</button>
+                    <button onClick={() => navigate(ROUTES.PRODUCTS)}>Узнать больше о наших продуктах &#8594;</button>
                 </div>
             </div>
 
             <div className="secondAboutRight">
                 <div className="aboutImage">
-                    <img src={sliderImage1}></img>
+                    <img src={ovalBarrelSauna}></img>
                 </div>
             </div>
         </div>

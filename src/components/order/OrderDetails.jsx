@@ -132,10 +132,6 @@ export const OrderDetails = () => {
                                 <button>Отменить заказ</button>
                             </div>
                         ))}
-                    
-
-                    
-                
 
                 <div className="paymentContainer">
                     <div className="priceTitle">

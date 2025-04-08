@@ -26,7 +26,7 @@ export const AboutPlacement = () => {
 
             <div className="placementCard">
                 <div className="placementTitle">
-                    <p>Офис в Абакане</p>
+                    <p>Офис в Красноярске</p>
                 </div>
 
                 <div className="placemetSubtitle">
@@ -35,7 +35,7 @@ export const AboutPlacement = () => {
 
                 <div className="placementStreet">
                     <StreetIcon className="icon"/>
-                    <p>ул.Примерная, д. 1, г. Абакан, Россия</p>
+                    <p>ул.Примерная, д. 1, г. Красноярск, Россия</p>
                 </div>
 
                 <div className="placementMail">
@@ -46,7 +46,7 @@ export const AboutPlacement = () => {
 
             <div className="placementCard">
                 <div className="placementTitle">
-                    <p>Офис в Абакане</p>
+                    <p>Офис в Новосибирске</p>
                 </div>
 
                 <div className="placemetSubtitle">
@@ -55,7 +55,7 @@ export const AboutPlacement = () => {
 
                 <div className="placementStreet">
                     <StreetIcon className="icon"/>
-                    <p>ул.Примерная, д. 1, г. Абакан, Россия</p>
+                    <p>ул.Примерная, д. 1, г. Новосибирск, Россия</p>
                 </div>
 
                 <div className="placementMail">

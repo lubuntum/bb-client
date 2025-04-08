@@ -1,6 +1,11 @@
+import { useNavigate } from "react-router-dom"
 import sliderImage1 from "../../res/images/banya-bochka-image1.png"
 
+import { ROUTES } from "../../routes.js"
+
 export const ProductSelection = () => {
+    const navigate = useNavigate()
+
     return (
         <div className="productSelectionContainer">
             <div className="productSelectionTitle">
@@ -12,42 +17,42 @@ export const ProductSelection = () => {
             </div>
 
             <div className="productSelectionBase">
-                <div className="productSelectionBaseItem">
+                <div className="productSelectionBaseItem" onClick={() => navigate(ROUTES.CONFIGURE)}>
                     <div className="baseImage">
                         <img src={sliderImage1}></img>
                     </div>
                     <p>Кедровая бочка</p>
                 </div>
 
-                <div className="productSelectionBaseItem">
+                <div className="productSelectionBaseItem" onClick={() => navigate(ROUTES.CONFIGURE)}>
                     <div className="baseImage">
                         <img src={sliderImage1}></img>
                     </div>
                     <p>Кедровая бочка</p>
                 </div>
 
-                <div className="productSelectionBaseItem">
+                <div className="productSelectionBaseItem" onClick={() => navigate(ROUTES.CONFIGURE)}>
                     <div className="baseImage">
                         <img src={sliderImage1}></img>
                     </div>
                     <p>Кедровая бочка</p>
                 </div>
 
-                <div className="productSelectionBaseItem">
+                <div className="productSelectionBaseItem" onClick={() => navigate(ROUTES.CONFIGURE)}>
                     <div className="baseImage">
                         <img src={sliderImage1}></img>
                     </div>
                     <p>Кедровая бочка</p>
                 </div>
 
-                <div className="productSelectionBaseItem">
+                <div className="productSelectionBaseItem" onClick={() => navigate(ROUTES.CONFIGURE)}>
                     <div className="baseImage">
                         <img src={sliderImage1}></img>
                     </div>
                     <p>Кедровая бочка</p>
                 </div>
 
-                <div className="productSelectionBaseItem">
+                <div className="productSelectionBaseItem" onClick={() => navigate(ROUTES.CONFIGURE)}>
                     <div className="baseImage">
                         <img src={sliderImage1}></img>
                     </div>
@@ -56,7 +61,7 @@ export const ProductSelection = () => {
             </div>
 
             <div className="productSelectionButton">
-                <button className="configure">Конфигуратор <span>&#8594;</span></button>
+                <button className="configure" onClick={() => navigate(ROUTES.CONFIGURE)}>Конфигуратор <span>&#8594;</span></button>
             </div>
         </div>
     )

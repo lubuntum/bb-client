@@ -1,4 +1,13 @@
+import { useEffect, useState } from "react"
+import reviewsData from "../res/reviews.json"
+
 export const HomeReviews = () => {
+    const [reviews, setReviews] = useState([])
+
+    useEffect(() => {
+        setReviews(reviewsData)
+    }, [])
+
     return (
         <div className="reviewsContainer">
             <div className="reviwesTitle">
@@ -10,110 +19,19 @@ export const HomeReviews = () => {
             </div>
 
             <div className="reviewsWrapper">
-                <div className="reviewsCard">
-                    <div className="reviewText">
-                        <p>Благодаря банной бочке Rustic Retreat наши вечера стали по-настоящему уютными и расслабляющими.</p>
-                    </div>
-                    <div className="reviewAuthor">
-                        <div className="reviewAuthorImage">
-                            <img></img>
+                {reviews.map((item, index) => (
+                    <div className="reviewsCard" key={index}>
+                        <div className="reviewText">
+                            <p>{item.text}</p>
                         </div>
-                        <div className="reviewAuthorName">
-                            <p>Анна Смирнова</p>
-                            <p>@annasmirnova</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="reviewsCard">
-                    <div className="reviewText">
-                        <p>Благодаря банной бочке Rustic Retreat наши вечера стали по-настоящему уютными и расслабляющими.</p>
-                    </div>
-                    <div className="reviewAuthor">
-                        <div className="reviewAuthorImage">
-                            <img></img>
-                        </div>
-                        <div className="reviewAuthorName">
-                            <p>Анна Смирнова</p>
-                            <p>@annasmirnova</p>
+                        <div className="reviewAuthor">
+                            <div className="reviewAuthorName">
+                                <p>{item.author}</p>
+                                <p>{item.username}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div className="reviewsCard">
-                    <div className="reviewText">
-                        <p>Благодаря банной бочке Rustic Retreat наши вечера стали по-настоящему уютными и расслабляющими.</p>
-                    </div>
-                    <div className="reviewAuthor">
-                        <div className="reviewAuthorImage">
-                            <img></img>
-                        </div>
-                        <div className="reviewAuthorName">
-                            <p>Анна Смирнова</p>
-                            <p>@annasmirnova</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="reviewsCard">
-                    <div className="reviewText">
-                        <p>Благодаря банной бочке Rustic Retreat наши вечера стали по-настоящему уютными и расслабляющими.</p>
-                    </div>
-                    <div className="reviewAuthor">
-                        <div className="reviewAuthorImage">
-                            <img></img>
-                        </div>
-                        <div className="reviewAuthorName">
-                            <p>Анна Смирнова</p>
-                            <p>@annasmirnova</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="reviewsCard">
-                    <div className="reviewText">
-                        <p>Благодаря банной бочке Rustic Retreat наши вечера стали по-настоящему уютными и расслабляющими.</p>
-                    </div>
-                    <div className="reviewAuthor">
-                        <div className="reviewAuthorImage">
-                            <img></img>
-                        </div>
-                        <div className="reviewAuthorName">
-                            <p>Анна Смирнова</p>
-                            <p>@annasmirnova</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="reviewsCard">
-                    <div className="reviewText">
-                        <p>Благодаря банной бочке Rustic Retreat наши вечера стали по-настоящему уютными и расслабляющими.</p>
-                    </div>
-                    <div className="reviewAuthor">
-                        <div className="reviewAuthorImage">
-                            <img></img>
-                        </div>
-                        <div className="reviewAuthorName">
-                            <p>Анна Смирнова</p>
-                            <p>@annasmirnova</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="reviewsCard">
-                    <div className="reviewText">
-                        <p>Благодаря банной бочке Rustic Retreat наши вечера стали по-настоящему уютными и расслабляющими.</p>
-                    </div>
-                    <div className="reviewAuthor">
-                        <div className="reviewAuthorImage">
-                            <img></img>
-                        </div>
-                        <div className="reviewAuthorName">
-                            <p>Анна Смирнова</p>
-                            <p>@annasmirnova</p>
-                        </div>
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     )

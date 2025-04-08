@@ -3,10 +3,14 @@ import { STATUSES } from "../../statuses"
 import { loginRequest } from "../../services/api/authApi"
 import { useAuth } from "../../services/auth/AuthProvider"
 import { authComponentsKeys } from "./AuthPage"
+import { ROUTES } from "../../routes.js"
 
 import { ReactComponent as FaceIcon } from "../../res/icons/face_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+import { useNavigate } from "react-router-dom"
 
 const LoginComponent = ({setCurrentComponent}) => {
+    const navigate = useNavigate()
+    
     const [status, setStatus] = useState(STATUSES.IDLE)
     const [email, setEmail] = useState(null)
     const [pass, setPass] = useState(null)
@@ -24,6 +28,7 @@ const LoginComponent = ({setCurrentComponent}) => {
     return (
         <div className="loginContainer">
             <div className="loginTitle">
+                <button className="link" onClick={()=> navigate(ROUTES.HOME)}>Назад</button>
                 <p>Вход</p>
                 <button className="link" onClick={()=> setCurrentComponent(authComponentsKeys.REGISTER)}>Создать аккаунт</button>
             </div>

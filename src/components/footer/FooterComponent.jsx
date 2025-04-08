@@ -3,8 +3,12 @@ import "../../styles/footer.css"
 import { ReactComponent as VkIcon } from "../../res/icons/VkontakteFill.svg"
 import { ReactComponent as TelegramIcon } from "../../res/icons/Telegram.svg"
 import { ReactComponent as YoutubeIcon } from "../../res/icons/YoutubeFill.svg"
+import { useNavigate } from "react-router-dom"
+import { ROUTES } from "../../routes"
 
 export const FooterComponent = () => {
+    const navigate = useNavigate()
+
     return (
         <footer>
             <div className="footerRights">
@@ -13,8 +17,8 @@ export const FooterComponent = () => {
             
             <div className="footerLinks">
                 <div className="footerNav">
-                    <a>О нас</a>
-                    <a>Продукция</a>
+                    <a onClick={() => navigate(ROUTES.ABOUT)}>О нас</a>
+                    <a onClick={() => navigate(ROUTES.PRODUCTS)}>Продукция</a>
                     <a>Политика конфиденциальности</a>
                     <a>Условия использования</a>
                     <a>Поддержка</a>

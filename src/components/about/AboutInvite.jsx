@@ -1,4 +1,11 @@
+import { useNavigate } from "react-router-dom"
+import { ROUTES } from "../../routes.js"
+import { useAuth } from "../../services/auth/AuthProvider"
+
 export const AboutInvite = () => {
+    const navigate = useNavigate()
+    const { checkAuth } = useAuth()
+
     return (
         <div className="inviteContainer">
             <div className="inviteTitle">
@@ -10,8 +17,8 @@ export const AboutInvite = () => {
             </div>
 
             <div className="inviteButton">
-                <button className="outline" style={{fontSize: "1.25rem", height: "50px", padding: "0 50px"}}>Наши бочки</button>
-                <button style={{fontSize: "1.25rem", height: "50px", padding: "0 50px"}}>Регистрация</button>
+                <button className="outline" style={{fontSize: "1.25rem", height: "50px", padding: "0 50px"}} onClick={() => navigate(ROUTES.PRODUCTS)}>Наши бочки</button>
+                {!checkAuth && <button style={{fontSize: "1.25rem", height: "50px", padding: "0 50px"}} onClick={() => navigate(ROUTES.AUTH)}>Регистрация</button>}
             </div>
         </div>
     )

@@ -7,8 +7,15 @@ import barrelNatureGarmony from "../res/images/barrelNatureGarmony.webp"
 import barrelModernComfort from "../res/images/barrelModernComfort.webp"
 import barrelTraditionalStyle from "../res/images/barrelTraditionalStyle.webp"
 import barrelComfortStyle from "../res/images/barrelComfortStyle.webp"
+import { useAuth } from "../services/auth/AuthProvider"
+
+import { ROUTES } from "../routes.js"
+import { useNavigate } from "react-router-dom"
 
 export const HomeBanner = () => {
+    const { checkAuth } = useAuth()
+    const navigate = useNavigate()
+
     const slides = [
         {image: barrelNatureGarmony},
         {image: barrelModernComfort},
@@ -66,8 +73,8 @@ export const HomeBanner = () => {
                 </div>
 
                 <div className="bannerButtons">
-                    <button style={{fontSize: "1.25rem", height: "50px", padding: "0 50px"}}>Регистрация</button>
-                    <button className="outline" style={{fontSize: "1.25rem", height: "50px", padding: "0 50px"}}>О нас</button>
+                    {!checkAuth && <button style={{fontSize: "1.25rem", height: "50px", padding: "0 50px"}} onClick={() => navigate(ROUTES.AUTH)}>Регистрация</button>}
+                    <button className="outline" style={{fontSize: "1.25rem", height: "50px", padding: "0 50px"}} onClick={() => navigate(ROUTES.ABOUT)}>О нас</button>
                 </div>
             </div>
 

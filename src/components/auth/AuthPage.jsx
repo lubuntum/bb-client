@@ -8,8 +8,8 @@ import { lazy, Suspense, useState } from "react"
 import('./LoginComponent')
 
 const authComponents = {
-    LOGIN: lazy(()=> import('./LoginComponent')),
-    REGISTER: lazy(()=> import('./RegisterComponent'))
+    LOGIN: lazy(() => import('./LoginComponent')),
+    REGISTER: lazy(() => import('./RegisterComponent'))
 }
 
 export const authComponentsKeys = {LOGIN: "LOGIN", REGISTER: "REGISTER"}

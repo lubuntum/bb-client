@@ -7,11 +7,6 @@ export const OrderReview = () => {
                 </div>
 
                 <div className="orderContatcsInput">
-                    <p>Имя Фамилия</p>
-                    <input type="text"></input>
-                </div>
-
-                <div className="orderContatcsInput">
                     <p>Сообщение</p>
                     <textarea type="text"></textarea>
                 </div>
