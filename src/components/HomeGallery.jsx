@@ -1,4 +1,9 @@
-import sliderImage1 from "../res/images/banya-bochka-image1.png"
+import galleryImage1 from "../res/images/barrelGallery1.webp"
+import galleryImage2 from "../res/images/barrelGallery2.webp"
+import galleryImage3 from "../res/images/barrelGallery3.webp"
+import galleryImage4 from "../res/images/barrelGallery4.webp"
+import galleryImage5 from "../res/images/barrelGallery5.webp"
+import galleryImage6 from "../res/images/barrelGallery6.webp"
 
 export const HomeGallery = () => {
     return (
@@ -14,7 +19,7 @@ export const HomeGallery = () => {
             <div className="galleryImages">
                 <div className="galleryItem">
                     <div className="galleryImage">
-                        <img src={sliderImage1}></img>
+                        <img src={galleryImage1}></img>
                     </div>
                     <div className="galleryText">
                         <p>Традиционная бочка</p>
@@ -23,7 +28,34 @@ export const HomeGallery = () => {
 
                 <div className="galleryItem">
                     <div className="galleryImage">
-                        <img src={sliderImage1}></img>
+                        <img src={galleryImage2}></img>
+                    </div>
+                    <div className="galleryText">
+                        <p>Сосновая бочка</p>
+                    </div>
+                </div>
+
+                <div className="galleryItem">
+                    <div className="galleryImage">
+                        <img src={galleryImage3}></img>
+                    </div>
+                    <div className="galleryText">
+                        <p>Еловая бочка</p>
+                    </div>
+                </div>
+
+                <div className="galleryItem">
+                    <div className="galleryImage">
+                        <img src={galleryImage4}></img>
+                    </div>
+                    <div className="galleryText">
+                        <p>Овальная бочка</p>
+                    </div>
+                </div>
+
+                <div className="galleryItem">
+                    <div className="galleryImage">
+                        <img src={galleryImage5}></img>
                     </div>
                     <div className="galleryText">
                         <p>Традиционная бочка</p>
@@ -32,16 +64,7 @@ export const HomeGallery = () => {
 
                 <div className="galleryItem">
                     <div className="galleryImage">
-                        <img src={sliderImage1}></img>
-                    </div>
-                    <div className="galleryText">
-                        <p>Традиционная бочка</p>
-                    </div>
-                </div>
-
-                <div className="galleryItem">
-                    <div className="galleryImage">
-                        <img src={sliderImage1}></img>
+                        <img src={galleryImage6}></img>
                     </div>
                     <div className="galleryText">
                         <p>Традиционная бочка</p>

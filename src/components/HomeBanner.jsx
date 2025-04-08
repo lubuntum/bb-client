@@ -3,14 +3,17 @@ import { ReactComponent as EcoIcon } from "../res/icons/forest_24dp_E8EAED_FILL0
 import { ReactComponent as ComIcon } from "../res/icons/local_fire_department_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 import { ReactComponent as StarIcon } from "../res/icons/star_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
 
-import sliderImage1 from "../res/images/banya-bochka-image1.png"
+import barrelNatureGarmony from "../res/images/barrelNatureGarmony.webp"
+import barrelModernComfort from "../res/images/barrelModernComfort.webp"
+import barrelTraditionalStyle from "../res/images/barrelTraditionalStyle.webp"
+import barrelComfortStyle from "../res/images/barrelComfortStyle.webp"
 
 export const HomeBanner = () => {
     const slides = [
-        {image: sliderImage1},
-        {image: sliderImage1},
-        {image: sliderImage1},
-        {image: sliderImage1},
+        {image: barrelNatureGarmony},
+        {image: barrelModernComfort},
+        {image: barrelTraditionalStyle},
+        {image: barrelComfortStyle},
     ]  
     const [currentIndex, setCurrentIndex] = useState(0)
     const [direction, setDirection] = useState(1)
