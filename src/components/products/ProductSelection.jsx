@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import sliderImage1 from "../../res/images/banya-bochka-image1.png"
 
 import { ROUTES } from "../../routes.js"
-
+import {PINE_CLASSIC, SPRUCE_CLASSIC} from "../../presets.js"
 export const ProductSelection = () => {
     const navigate = useNavigate()
 
@@ -17,14 +17,14 @@ export const ProductSelection = () => {
             </div>
 
             <div className="productSelectionBase">
-                <div className="productSelectionBaseItem" onClick={() => navigate(ROUTES.CONFIGURE)}>
+                <div className="productSelectionBaseItem" onClick={() => navigate(ROUTES.CONFIGURE, {state: PINE_CLASSIC})}>
                     <div className="baseImage">
                         <img src={sliderImage1}></img>
                     </div>
                     <p>Кедровая бочка</p>
                 </div>
 
-                <div className="productSelectionBaseItem" onClick={() => navigate(ROUTES.CONFIGURE)}>
+                <div className="productSelectionBaseItem" onClick={() => navigate(ROUTES.CONFIGURE, {state: SPRUCE_CLASSIC})}>
                     <div className="baseImage">
                         <img src={sliderImage1}></img>
                     </div>

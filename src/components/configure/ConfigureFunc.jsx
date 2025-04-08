@@ -20,6 +20,7 @@ import { SERVER_URL } from "../../services/api/urls"
 import { createOrderRequest } from "../../services/api/orderApi"
 import { useAuth } from "../../services/auth/AuthProvider"
 import { STATUSES } from "../../statuses"
+import { useLocation } from "react-router-dom"
 
 export const ConfigureFunc = () => {
     const settingsItemsTemplate = [
@@ -137,6 +138,8 @@ export const ConfigureFunc = () => {
     const [barrelSauna, setBarrelSauna] = useState({})
     const [status, setStatus] = useState(STATUSES.IDLE)
 
+    const preset = useLocation()
+
     const {getToken} = useAuth()
 
     useEffect(() => {
@@ -149,6 +152,10 @@ export const ConfigureFunc = () => {
                 return item
             })
             setSettingsItems(preparedItems)
+
+            if (!preset || !preset.state) return
+            setBarrelSauna(preset.state)
+            setTotalPrice(countToTotalPrice(preset.state))
         }
         getBarrelComponents()
     }, [])
@@ -167,8 +174,7 @@ export const ConfigureFunc = () => {
             setStatus(STATUSES.SUCCESS)
         } catch(err) {
             setStatus(STATUSES.ERROR)
-        }
-        
+        } 
     }
     const handleOptionSelect = (type, option) => {
         const updatedBarrelSauna = {... barrelSauna, [type]: option}
