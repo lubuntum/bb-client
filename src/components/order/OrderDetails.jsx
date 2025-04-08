@@ -113,15 +113,15 @@ export const OrderDetails = () => {
 
             <div className="detailsPriceContainer">
                         {orders.map((order, orderIndex) => (
-                            <div className="priceContainer">
+                            <div key={orderIndex} className="priceContainer">
                                 <div className="priceTitle">
                                     <p>Детали заказа</p>
                                 </div>
                                 <div className="configItems">
-                                    {orderDetailLabels.map(detail => (
-                                        <div key={orderIndex} className="configItem">
+                                    {orderDetailLabels.map((detail, index) => (
+                                        <div key={index} className="configItem">
                                             <p>{detail.label}</p>
-                                            <p>{components[detail.component].find(item => item.id === order[detail.key]).type}</p>
+                                            <p>{components[detail.component].find(item => item.id === order[detail.key])?.type}</p>
                                         </div>
                                     ))}
                                 </div>
